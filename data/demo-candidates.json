@@ -1,0 +1,94 @@
+{
+  "queries": [
+    {
+      "id": "q-jersey-mailbox",
+      "organization": "PostalBridge",
+      "recipient": "Operations Team",
+      "streetAddress": "50 Harrison Street",
+      "addressLine2": "Suite 412",
+      "locality": "Hoboken",
+      "region": "NJ",
+      "postalCode": "07030",
+      "country": "US"
+    },
+    {
+      "id": "q-toronto-lab",
+      "organization": "Northwind Research",
+      "recipient": "Priya Patel",
+      "streetAddress": "551 Bloor St West",
+      "addressLine2": "Unit 909",
+      "locality": "Toronto",
+      "region": "ON",
+      "postalCode": "M5S 1Y6",
+      "country": "CA"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "cand-hoboken-exact-ish",
+      "organization": "postalbridge",
+      "recipient": "ops team",
+      "streetAddress": "50 Harrison St",
+      "addressLine2": "Ste 412",
+      "locality": "Hoboken",
+      "region": "NJ",
+      "postalCode": "07030",
+      "country": "US"
+    },
+    {
+      "id": "cand-hoboken-wrong-unit",
+      "organization": "postalbridge",
+      "recipient": "operations team",
+      "streetAddress": "50 Harrison Street",
+      "addressLine2": "Suite 210",
+      "locality": "Hoboken",
+      "region": "NJ",
+      "postalCode": "07030",
+      "country": "US"
+    },
+    {
+      "id": "cand-jersey-city",
+      "organization": "postalbridge",
+      "recipient": "operations",
+      "streetAddress": "50 Harrison St",
+      "addressLine2": "Ste 412",
+      "locality": "Jersey City",
+      "region": "NJ",
+      "postalCode": "07302",
+      "country": "US"
+    },
+    {
+      "id": "cand-toronto-exact-ish",
+      "organization": "northwind research",
+      "recipient": "priya patel",
+      "streetAddress": "551 Bloor Street W",
+      "addressLine2": "Unit 909",
+      "locality": "Toronto",
+      "region": "ON",
+      "postalCode": "M5S1Y6",
+      "country": "CA"
+    },
+    {
+      "id": "cand-toronto-nearby",
+      "organization": "northwind research labs",
+      "recipient": "p patel",
+      "streetAddress": "551 Bloor St W",
+      "addressLine2": "Unit 901",
+      "locality": "Toronto",
+      "region": "ON",
+      "postalCode": "M5S 1Y6",
+      "country": "CA"
+    },
+    {
+      "id": "cand-montreal",
+      "organization": "northwind research",
+      "recipient": "priya patel",
+      "streetAddress": "551 Bloor Street W",
+      "addressLine2": "Unit 909",
+      "locality": "Montreal",
+      "region": "QC",
+      "postalCode": "H2Y 1C6",
+      "country": "CA"
+    }
+  ]
+}
