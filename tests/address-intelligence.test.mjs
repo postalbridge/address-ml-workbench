@@ -4,10 +4,12 @@ import assert from 'node:assert/strict';
 import {
   bucketScore,
   explainMatch,
+  DEFAULT_WEIGHTS,
   extractFeatures,
   rankCandidates,
   tokenize
 } from '../src/address-intelligence.mjs';
+import { evaluateBenchmark } from '../src/evaluate-address-intelligence.mjs';
 
 const query = {
   id: 'query',
@@ -83,4 +85,58 @@ test('bucketScore separates low and review matches', () => {
   assert.equal(bucketScore(0.91), 'high');
   assert.equal(bucketScore(0.65), 'review');
   assert.equal(bucketScore(0.42), 'low');
+});
+
+test('evaluateBenchmark reports perfect performance on a deterministic mini benchmark', () => {
+  const benchmark = {
+    cases: [
+      {
+        id: 'known-match',
+        label: 'Known match',
+        acceptableIds: ['exact'],
+        query,
+        candidates: [weaker, exactish]
+      },
+      {
+        id: 'known-non-match',
+        label: 'Known non-match',
+        acceptableIds: [],
+        query: {
+          id: 'no-match',
+          organization: 'Aurora Ops',
+          recipient: 'Riley Chen',
+          streetAddress: '900 Pine Street',
+          addressLine2: 'Suite 880',
+          locality: 'Seattle',
+          region: 'WA',
+          postalCode: '98101',
+          country: 'US'
+        },
+        candidates: [
+          {
+            id: 'portland',
+            organization: 'aurora ops',
+            recipient: 'riley chen',
+            streetAddress: '915 Pine St',
+            addressLine2: 'Suite 880',
+            locality: 'Portland',
+            region: 'OR',
+            postalCode: '97205',
+            country: 'US'
+          }
+        ]
+      }
+    ]
+  };
+
+  const result = evaluateBenchmark(benchmark, {
+    matchThreshold: 0.8,
+    weights: DEFAULT_WEIGHTS
+  });
+
+  assert.equal(result.summary.totalCases, 2);
+  assert.equal(result.summary.top1Accuracy, 1);
+  assert.equal(result.summary.decisionAccuracy, 1);
+  assert.equal(result.summary.falsePositives, 0);
+  assert.equal(result.summary.falseNegatives, 0);
 });

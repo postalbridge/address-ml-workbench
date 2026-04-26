@@ -1,0 +1,158 @@
+{
+  "matchThreshold": 0.8,
+  "cases": [
+    {
+      "id": "hoboken-unit-match",
+      "label": "Exact unit should outrank wrong-suite alternatives",
+      "acceptableIds": ["cand-hoboken-exact-ish"],
+      "query": {
+        "id": "q-jersey-mailbox",
+        "organization": "PostalBridge",
+        "recipient": "Operations Team",
+        "streetAddress": "50 Harrison Street",
+        "addressLine2": "Suite 412",
+        "locality": "Hoboken",
+        "region": "NJ",
+        "postalCode": "07030",
+        "country": "US"
+      },
+      "candidates": [
+        {
+          "id": "cand-hoboken-exact-ish",
+          "organization": "postalbridge",
+          "recipient": "ops team",
+          "streetAddress": "50 Harrison St",
+          "addressLine2": "Ste 412",
+          "locality": "Hoboken",
+          "region": "NJ",
+          "postalCode": "07030",
+          "country": "US"
+        },
+        {
+          "id": "cand-hoboken-wrong-unit",
+          "organization": "postalbridge",
+          "recipient": "operations team",
+          "streetAddress": "50 Harrison Street",
+          "addressLine2": "Suite 210",
+          "locality": "Hoboken",
+          "region": "NJ",
+          "postalCode": "07030",
+          "country": "US"
+        },
+        {
+          "id": "cand-jersey-city",
+          "organization": "postalbridge",
+          "recipient": "operations",
+          "streetAddress": "50 Harrison St",
+          "addressLine2": "Ste 412",
+          "locality": "Jersey City",
+          "region": "NJ",
+          "postalCode": "07302",
+          "country": "US"
+        }
+      ]
+    },
+    {
+      "id": "toronto-postal-normalization",
+      "label": "Postal spacing differences should still match the correct record",
+      "acceptableIds": ["cand-toronto-exact-ish"],
+      "query": {
+        "id": "q-toronto-lab",
+        "organization": "Northwind Research",
+        "recipient": "Priya Patel",
+        "streetAddress": "551 Bloor St West",
+        "addressLine2": "Unit 909",
+        "locality": "Toronto",
+        "region": "ON",
+        "postalCode": "M5S 1Y6",
+        "country": "CA"
+      },
+      "candidates": [
+        {
+          "id": "cand-toronto-exact-ish",
+          "organization": "northwind research",
+          "recipient": "priya patel",
+          "streetAddress": "551 Bloor Street W",
+          "addressLine2": "Unit 909",
+          "locality": "Toronto",
+          "region": "ON",
+          "postalCode": "M5S1Y6",
+          "country": "CA"
+        },
+        {
+          "id": "cand-toronto-nearby",
+          "organization": "northwind research labs",
+          "recipient": "p patel",
+          "streetAddress": "551 Bloor St W",
+          "addressLine2": "Unit 901",
+          "locality": "Toronto",
+          "region": "ON",
+          "postalCode": "M5S 1Y6",
+          "country": "CA"
+        },
+        {
+          "id": "cand-montreal",
+          "organization": "northwind research",
+          "recipient": "priya patel",
+          "streetAddress": "551 Bloor Street W",
+          "addressLine2": "Unit 909",
+          "locality": "Montreal",
+          "region": "QC",
+          "postalCode": "H2Y 1C6",
+          "country": "CA"
+        }
+      ]
+    },
+    {
+      "id": "no-match-rejection",
+      "label": "A different city and postal cluster should stay below the decision threshold",
+      "acceptableIds": [],
+      "query": {
+        "id": "q-seattle-mismatch",
+        "organization": "Aurora Ops",
+        "recipient": "Riley Chen",
+        "streetAddress": "900 Pine Street",
+        "addressLine2": "Suite 880",
+        "locality": "Seattle",
+        "region": "WA",
+        "postalCode": "98101",
+        "country": "US"
+      },
+      "candidates": [
+        {
+          "id": "cand-denver-office",
+          "organization": "aurora operations",
+          "recipient": "r chen",
+          "streetAddress": "900 Pine Street",
+          "addressLine2": "Suite 410",
+          "locality": "Denver",
+          "region": "CO",
+          "postalCode": "80203",
+          "country": "US"
+        },
+        {
+          "id": "cand-portland-office",
+          "organization": "aurora ops",
+          "recipient": "riley chen",
+          "streetAddress": "915 Pine St",
+          "addressLine2": "Suite 880",
+          "locality": "Portland",
+          "region": "OR",
+          "postalCode": "97205",
+          "country": "US"
+        },
+        {
+          "id": "cand-vancouver-office",
+          "organization": "aurora ops",
+          "recipient": "riley chen",
+          "streetAddress": "900 Pine Ave",
+          "addressLine2": "Suite 880",
+          "locality": "Vancouver",
+          "region": "BC",
+          "postalCode": "V6B 1A1",
+          "country": "CA"
+        }
+      ]
+    }
+  ]
+}

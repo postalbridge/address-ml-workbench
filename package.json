@@ -10,6 +10,7 @@
   "scripts": {
     "test": "node --test",
     "demo": "node scripts/demo.mjs",
-    "check": "npm test && npm run demo"
+    "evaluate": "node scripts/evaluate.mjs",
+    "check": "npm test && npm run demo && npm run evaluate"
   }
 }
